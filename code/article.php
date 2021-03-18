@@ -9,15 +9,15 @@
 	$aid = $_GET['aid'];
 	$result=get_article($aid);
 	$row = $result->fetch(); //There should only be one row
+	if($result->rowCount() == 0) {
+		die('No entries returned.')
+	}
 ?>
 <!doctype html>
 <html lang="en">
 <head>
 <title><?php echo $row['title'] ?></title>
 	<?php include("templates/header.php"); ?>
-
-
-
 </head>
 <body>
 	<?php include("templates/nav.php"); ?>
