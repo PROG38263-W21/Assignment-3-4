@@ -8,9 +8,6 @@
 	}
 	$aid = $_GET['aid'];
 	$result = get_article($aid);
-	if($result->rowCount() === 0) {
-		die('No entries returned.');
-	}
 
 	$row = $result->fetch(); //There should only be one row
 ?>
