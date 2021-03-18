@@ -72,7 +72,7 @@ function get_article($aid) {
 		WHERE
 		aid=?
 		LIMIT 1";
-	return run_query($query, $aid);
+	return run_query($query, [$aid]);
 }
 
 function delete_article($aid) {
