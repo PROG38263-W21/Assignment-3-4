@@ -24,6 +24,7 @@ try {
 }
 
 function run_query($query, $args = []) {
+	global $pdo;
 	if ($debug) {
 		echo "$query<br>";
 	}
