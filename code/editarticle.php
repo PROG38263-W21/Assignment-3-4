@@ -5,13 +5,16 @@
 if($_SERVER['REQUEST_METHOD'] == 'GET') {
 	$aid = $_GET['aid'];
 	$result = get_article($aid);
+	if ($result->rowCount() != 0) {
+		header("Location: /newarticle.php");
+	}
 	$row = $result->fetch();
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$title = $_POST['title'];
 	$content = $_POST['content'];
 	$aid = $_POST['aid'];
 	$result = update_article($title, $content, $aid);
-	Header ("Location: /");
+	header("Location: /");
 }
 ?>
 
