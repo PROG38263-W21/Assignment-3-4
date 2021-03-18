@@ -2,7 +2,7 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$result = authenticate_user($dbconn, $_POST['username'], $_POST['password']);
+	$result = authenticate_user($_POST['username'], $_POST['password']);
 	if($result->rowCount() === 1) {
 		$_SESSION['username'] = $_POST['username'];
 		$_SESSION['authenticated'] = True;
