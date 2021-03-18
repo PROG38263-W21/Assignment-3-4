@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['id'] = $result->fetch()['id'];
 		//Redirect to admin area
 		header("Location: /admin.php");
-	}
-
-  $error = "Incorrect username/password.";
+	} else {
+    $error = "Incorrect username/password. Try again.";
+  }
 }
 
 ?>
