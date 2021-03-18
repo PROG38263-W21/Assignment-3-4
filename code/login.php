@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		//Redirect to admin area
 		header("Location: /admin.php");
 	}
+
+  $error = "Incorrect username/password.";
 }
 
 ?>
@@ -56,6 +58,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 	<?php include("templates/nav.php"); ?>
 	<?php include("templates/contentstart.php"); ?>
+
+<?php if(isset($error)): ?>
+  <div class="alert alert-warning" role="alert">
+    <?php echo $error; ?>
+  </div>
+<?php endif; ?>
 
 <form class="form-signin" action='#' method='POST'>
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
