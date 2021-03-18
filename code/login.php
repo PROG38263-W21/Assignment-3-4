@@ -3,13 +3,13 @@
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$result = authenticate_user($dbconn, $_POST['username'], $_POST['password']);
-	if (pg_num_rows($result) == 1) {
+	if($result->rowCount() === 1) {
 		$_SESSION['username'] = $_POST['username'];
 		$_SESSION['authenticated'] = True;
-		$_SESSION['id'] = pg_fetch_array($result)['id'];
+		$_SESSION['id'] = $result->fetch()['id'];
 		//Redirect to admin area
 		header("Location: /admin.php");
-	}	
+	}
 }
 
 ?>
