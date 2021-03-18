@@ -5,7 +5,7 @@
 if($_SERVER['REQUEST_METHOD'] == 'GET') {
 	$aid = $_GET['aid'];
 	$result = get_article($aid);
-	if ($result->rowCount() != 0) {
+	if ($result->rowCount() != 1) {
 		header("Location: /newarticle.php");
 	}
 	$row = $result->fetch();
