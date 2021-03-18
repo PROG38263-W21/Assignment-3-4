@@ -30,7 +30,7 @@ function run_query($query, $args = []) {
 	}
 
 	$stmt = $pdo->prepare($query);
-	$result->execute($args);
+	$result = $stmt->execute($args);
 
 	if ($result == False and $debug) {
 		echo "Query failed<br>";
