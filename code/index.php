@@ -13,7 +13,7 @@
 
 	<?php
 		$result = get_article_list($dbconn);
-		while ($row = pg_fetch_array($result)) {
+		while ($row = $result->fetch()) {
 	?>
 
 <div class="blog-post">

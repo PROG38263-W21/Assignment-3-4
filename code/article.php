@@ -4,11 +4,11 @@
 //If there was no article id suppled, redirect to homepage.
 //Since we're potentially doing a redirect, this has to come before ANY html content.
 	if (!isset($_GET['aid'])) {
-		header("Location: /"); 
+		header("Location: /");
 	}
 	$aid = $_GET['aid'];
-	$result=get_article($dbconn, $aid);
-	$row = pg_fetch_array($result, 0); //There should only be one row
+	$result=get_article($aid);
+	$row = $result->fetch(); //There should only be one row
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,7 +24,7 @@
 	<?php include("templates/contentstart.php"); ?>
 
 	<h3 class="pb-4 mb-4 font-italic border-bottom">
-        Off the dome. Here we go ... 
+        Off the dome. Here we go ...
       	</h3>
 
 	<div class="blog-post">

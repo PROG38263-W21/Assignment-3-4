@@ -21,8 +21,8 @@ New Post <span class="fa fa-plus" aria-hidden="true"></span>
 
 <?php
 # get articles by user or, if role is admin, all articles
-		$result = get_article_list($dbconn);
-		while ($row = pg_fetch_array($result)) {
+		$result = get_article_list();
+		while ($row = $result->fetch()) {
 	?>
 <tr>
   <td><a href='article.php?aid=<?php echo $row['aid'] ?>'><?php echo $row['title'] ?></a></td>
