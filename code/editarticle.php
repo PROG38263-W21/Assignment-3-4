@@ -4,13 +4,13 @@
 
 if($_SERVER['REQUEST_METHOD'] == 'GET') {
 	$aid = $_GET['aid'];
-	$result=get_article($aid);
+	$result = get_article($aid);
 	$row = $result->fetch();
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$title = $_POST['title'];
 	$content = $_POST['content'];
 	$aid = $_POST['aid'];
-	$result=update_article($title, $content, $aid);
+	$result = update_article($title, $content, $aid);
 	Header ("Location: /");
 }
 ?>

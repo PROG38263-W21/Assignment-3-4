@@ -7,11 +7,12 @@
 		header("Location: /");
 	}
 	$aid = $_GET['aid'];
-	$result=get_article($aid);
-	$row = $result->fetch(); //There should only be one row
-	if($result->rowCount() == 0) {
-		die('No entries returned.')
+	$result = get_article($aid);
+	if($result->rowCount() === 0) {
+		die('No entries returned.');
 	}
+
+	$row = $result->fetch(); //There should only be one row
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,16 +25,21 @@
 	<?php include("templates/contentstart.php"); ?>
 
 	<h3 class="pb-4 mb-4 font-italic border-bottom">
-        Off the dome. Here we go ...
-      	</h3>
-
+		Off the dome. Here we go ...
+	</h3>
 	<div class="blog-post">
-	<h2 class="blog-post-title"><?php echo $row['title'] ?></h2>
-	<p class="blog-post-meta">
-		<?php echo substr($row['date'], 0, 10)." by ".$row['author'] ?>
-	</p><p>
-		<?php echo $row['content'] ?>
-	</p>
+	<?php if($result->rowCount() === 1): ?>
+		<h2 class="blog-post-title"><?php echo $row['title'] ?></h2>
+		<p class="blog-post-meta">
+			<?php echo substr($row['date'], 0, 10)." by ".$row['author'] ?>
+		</p>
+		<p>
+			<?php echo $row['content'] ?>
+		</p>
+	<?php else: ?>
+		<h2 class="blog-post-title">No article found.</h2>
+	<?php endif; ?>
+
       </div><!-- /.blog-post -->
 	<?php include("templates/contentstop.php"); ?>
 	<?php include("templates/footer.php"); ?>
