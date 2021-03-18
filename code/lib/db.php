@@ -12,7 +12,7 @@ $options = [
 	PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 try {
-	 $pdo = new PDO($dsn, $user, $pass, $options);
+	 $pdo = new PDO($dsn, $pg_dbuser, $pg_dbpassword, $options);
 	 if ($debug && $pdo) {
 		echo 'Connection status ok';
 	 }
